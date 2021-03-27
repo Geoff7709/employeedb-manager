@@ -7,7 +7,7 @@ function Roster() {
     }, [])
     const fetchEmployeeRoster = async () => {
         const response = await axios('https://randomuser.me/api/?results=50')
-        console.log(response.data.results)
+        console.log(response.data.results[0].name)
     }
     return (
         <div>
