@@ -6,8 +6,9 @@ function Roster() {
         fetchEmployeeRoster()
     }, [])
     const fetchEmployeeRoster = async () => {
-        const response = await axios('https://randomuser.me/api/?results=50')
-        console.log(response.data.results[0].name)
+        const response = await axios('https://randomuser.me/api/?seed=oidg&results=50').catch(err => console.error(err))
+        const results = response.data.results
+        results.map((result) => console.log(result.name))
     }
     return (
         <div>
