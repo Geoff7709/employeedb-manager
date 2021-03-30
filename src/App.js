@@ -22,7 +22,7 @@ function App() {
   }, [])
   const fetchEmployeeRoster = async () => {
     try {
-      const { data } = await axios('https://randomuser.me/api/?seed=oidg&results=100&nat=FR,GB,IE,IR,NO,NL,NZ,TR,US')
+      const { data } = await axios('https://randomuser.me/api/?seed=oidg&results=100&nat=FR,GB,IE,NO,NL,NZ,TR,US')
       const results = data.results
       console.log(results)
       setRoster(results)
@@ -31,25 +31,27 @@ function App() {
     }
   }
 
-  useEffect(() => console.log(roster), [roster])
+
 
   return (
-    <Router>
-      <Navbar />
-      <EmployeeContext.Provider value={roster}>
+    <div className='App'>
+      <Router>
+        <Navbar />
         <Switch>
           <Route path='/search'>
             <Search />
           </Route>
-          <Route path='/roster'>
-            <Roster />
-          </Route>
+          <EmployeeContext.Provider value={roster}>
+            <Route path='/roster'>
+              <Roster />
+            </Route>
+          </EmployeeContext.Provider>
           <Route path='/'>
             <Home />
           </Route>
         </Switch>
-      </EmployeeContext.Provider>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
