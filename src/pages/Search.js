@@ -43,14 +43,14 @@ function Search() {
           <div className="input-group mb-3">
             <label className="input-group-text" for="inputGroupSelect01">Options</label>
             <select className="form-select" id="inputGroupSelect01" onChange={handleSelect} >
-              <option selected>Search By Country</option>
+              <option >Search By Country</option>
               <option value="FR">France</option>
               <option value="GB">Great Britain</option>
               <option value="IE">Ireland</option>
               <option value="NO">Norway</option>
-              <option value="NE">Netherlands</option>
+              <option value="NL">Netherlands</option>
               <option value="NZ">New Zealand</option>
-              <option value="TU">Turkey</option>
+              <option value="TR">Turkey</option>
               <option value="US">United States</option>
             </select>
           </div>
