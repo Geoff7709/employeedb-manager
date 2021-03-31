@@ -32,10 +32,10 @@ function Search() {
       console.error(err)
     }
   }
-   const handleSelect = (e) => {
-     let searchNat = e.target.value
-     fetchEmployeeByLoc(searchNat) 
-   }
+  const handleSelect = (e) => {
+    let searchNat = e.target.value
+    fetchEmployeeByLoc(searchNat)
+  }
   return (
     <div>
       <div className='container'>
@@ -57,7 +57,11 @@ function Search() {
         </div>
       </div>
       <EmployeeContext.Provider value={roster}>
-        <EmployeeCard />
+        <div className='container'>
+          <div className='row'>
+            <EmployeeCard />
+          </div>
+        </div>
       </EmployeeContext.Provider>
     </div>
   )

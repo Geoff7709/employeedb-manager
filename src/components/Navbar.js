@@ -1,9 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Nav = styled.nav`
+    margin-bottom: 15px
+    position: sticky;
+    top: 0;
+`
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
                 <h2 className="navbar-brand">Navbar</h2>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +27,7 @@ function Navbar() {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </Nav>
     )
 }
 export default Navbar

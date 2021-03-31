@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import EmployeeCard from '../components/EmployeeCard'
+import styled from 'styled-components'
+
+
+// const Grid = styled.div`
+// display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-gap: 10px;`
 
 function Roster() {
-    
+
     return (
-        // <div>
-        // <h2>Employee Roster</h2>
-        // </div>
         <div className='container'>
-        <div className='row'>
-        <EmployeeCard />
-        </div>
+            <div className='row'>
+                <EmployeeCard />
+            </div>
         </div>
     )
 }
