@@ -5,7 +5,6 @@ import {
   Route,
 } from "react-router-dom";
 import axios from 'axios'
-import Home from './pages/Home'
 import Search from './pages/Search'
 import Roster from './pages/Roster'
 import Navbar from './components/Navbar'
@@ -25,7 +24,21 @@ function App() {
       const { data } = await axios('https://randomuser.me/api/?seed=oidg&results=100&nat=FR,GB,IE,NO,NL,NZ,TR,US')
       const results = data.results
       console.log(results)
-      setRoster(results)
+      const compare = (a, b) => {
+        const nameA = a.name.last
+        const nameB = b.name.last
+
+        let comparison = 0;
+        if (nameA > nameB) {
+          comparison = 1;
+        } else if (nameA < nameB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      const sortedResults = results.sort(compare)
+      console.log(sortedResults)
+      setRoster(sortedResults)
     } catch (err) {
       console.error(err)
     }
@@ -42,13 +55,10 @@ function App() {
             <Search />
           </Route>
           <EmployeeContext.Provider value={roster}>
-            <Route path='/roster'>
+            <Route path='/'>
               <Roster />
             </Route>
           </EmployeeContext.Provider>
-          <Route path='/'>
-            <Home />
-          </Route>
         </Switch>
       </Router>
     </div>

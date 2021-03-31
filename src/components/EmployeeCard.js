@@ -9,8 +9,8 @@ function EmployeeCard() {
         <div>
             {
                 roster.map(employee => {
-                    return (<div className='col-md-4'>
-                        <div className="card mb-3" key={employee.login.uuid}>
+                    return (<div className='col-md-4' key={employee.login.uuid}>
+                        <div className="card mb-3">
                             <div >
                                 <img src={employee.picture.large} alt={`${employee.name.first} ${employee.name.last}`} />
                                 <div >

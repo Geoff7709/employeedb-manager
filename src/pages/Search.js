@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import EmployeeCard from '../components/EmployeeCard'
 import EmployeeContext from '../utils/EmployeeContext'
 
 function Search() {
   const [roster, setRoster] = useState([])
-//   useEffect(() => {
-//     fetchEmployeeByLoc()
-//   }, [])
+
 
   const fetchEmployeeByLoc = async (country) => {
     try {
       const { data } = await axios('https://randomuser.me/api/?seed=oidg&results=100&nat=FR,GB,IE,NO,NL,NZ,TR,US')
       const results = data.results
       console.log(results)
-      const filteredResults = results.filter((result) => result.nat === country)
+      const compare = (a, b) => {
+        const nameA = a.name.last
+        const nameB = b.name.last
+
+        let comparison = 0;
+        if (nameA > nameB) {
+          comparison = 1;
+        } else if (nameA < nameB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      const sortedResults = results.sort(compare)
+      const filteredResults = sortedResults.filter((result) => result.nat === country)
       console.log(filteredResults)
       setRoster(filteredResults)
     } catch (err) {
@@ -32,7 +43,7 @@ function Search() {
           <div className="input-group mb-3">
             <label className="input-group-text" for="inputGroupSelect01">Options</label>
             <select className="form-select" id="inputGroupSelect01" onChange={handleSelect} >
-              <option selected>Sort By Country</option>
+              <option selected>Search By Country</option>
               <option value="FR">France</option>
               <option value="GB">Great Britain</option>
               <option value="IE">Ireland</option>
